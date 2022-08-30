@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour
+public class Player : MonoBehaviour
 {
     #region Singleton
-    private PlayerMovement _singleton;
-    public PlayerMovement Singleton
+    private Player _singleton;
+    public Player Singleton
     {
         get { return _singleton; }
         set
@@ -24,26 +24,16 @@ public class PlayerMovement : MonoBehaviour
     }
     #endregion
     #region Properties
-    private float _speed;
-    public float Speed
+    private int _health;
+    public int Health
     {
-        get { return _speed; }
+        get { return _health; }
         set
         {
-            _speed = value;
+            _health = value;
         }
     }
     #endregion
-    #region Variables
-    private CharacterController player;
-    private float maxSpeed;
-    private float MaxAcceleration;
-    private Vector3 lastFixedUpdatePosition;
-    #endregion
-    private void Start()
-    {
-        
-    }
     private void OnValidate()
     {
         Singleton = this;
