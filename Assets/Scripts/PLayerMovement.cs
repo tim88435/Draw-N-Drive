@@ -5,8 +5,8 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     #region Singleton
-    private PlayerMovement _singleton;
-    public PlayerMovement Singleton
+    private static PlayerMovement _singleton;
+    public static PlayerMovement Singleton
     {
         get { return _singleton; }
         set
@@ -15,16 +15,16 @@ public class PlayerMovement : MonoBehaviour
             {
                 _singleton = value;
             }
-            else
+            else if (_singleton != value)
             {
                 Debug.LogWarning($"{nameof(value)} already exists in the current scene. Deleting clone");
-                Destroy(this.gameObject);
+                Destroy(value.gameObject);
             }
         }
     }
     #endregion
     #region Properties
-    private float _speed;
+    [SerializeField] private float _speed;
     public float Speed
     {
         get { return _speed; }
@@ -36,13 +36,40 @@ public class PlayerMovement : MonoBehaviour
     #endregion
     #region Variables
     private CharacterController player;
-    private float maxSpeed;
-    private float MaxAcceleration;
-    private Vector3 lastFixedUpdatePosition;
+    [SerializeField] private float maxSpeed;
+    [SerializeField] private float acceleration;
+    [SerializeField] private float gravity = 10f;
+    [Range(0.90f,1.1f)]
+    [SerializeField] float forgivenessRatio = 1;
+    [SerializeField] float sensitivity;
+    public float invinsibilitySeconds;
+    public float timeSinceLastHit;
+    [SerializeField] private float lastFixedUpdatePosition = 0;
     #endregion
     private void Start()
     {
+        player = GetComponent<CharacterController>();
         
+        //player.slopeLimit = 0;
+#if UNITY_EDITOR
+
+#endif
+    }
+    private void FixedUpdate()
+    {
+        if (lastFixedUpdatePosition + Speed * forgivenessRatio > transform.position.z)
+        {
+            if (timeSinceLastHit + invinsibilitySeconds < Time.time)
+            {
+                Speed = 0;
+                Player.Singleton.Health--;
+                timeSinceLastHit = Time.time;
+            }
+        }
+        lastFixedUpdatePosition = transform.position.z;
+        Speed += acceleration * Time.fixedDeltaTime;
+        Speed = Mathf.Clamp(Speed, 0, maxSpeed);
+        player.Move(new Vector3(Input.GetAxis("Horizontal") * sensitivity, -gravity * Time.fixedDeltaTime, Speed));
     }
     private void OnValidate()
     {
