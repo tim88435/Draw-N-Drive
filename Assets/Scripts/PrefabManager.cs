@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
-public class PrefabManager : MonoBehaviour
+public class PrefabManager: MonoBehaviour
 {
     #region Singleton
+    
     private static PrefabManager _singleton;
     public static PrefabManager Singleton
     {
@@ -22,12 +23,13 @@ public class PrefabManager : MonoBehaviour
                 Destroy(value.gameObject);
             }
         }
-    }
-    #endregion
-    private void OnValidate()
+    }    private void OnValidate()
     {
         Singleton = this;
     }
+    
+    #endregion
+    /*
     public struct ObjectPrefab
     {
         public int objectID;
@@ -37,13 +39,30 @@ public class PrefabManager : MonoBehaviour
             this.objectID = objectID;
             this.prefab = prefab;
         }
-    }
-    private static List<ObjectPrefab> prefabList = new List<ObjectPrefab>();
+    }*/
+    //public static List<ObjectPrefab> prefabList = new List<ObjectPrefab>();
+    public List<GameObject> prefabList = new List<GameObject>();
     public GameObject GetObject(int index)
     {
-        return prefabList[index].prefab;
+        //return prefabList[index].prefab;
+        return prefabList[index];
     }
-    public void SaveObject(ObjectPrefab objectPrefab)
+    public bool CheckIfObject(GameObject gameObject, out int ID)
+    {
+        GameObject prefab;
+        if (prefab = PrefabUtility.GetCorrespondingObjectFromOriginalSource(gameObject))
+        {
+            if (prefabList.Contains(prefab))
+            {
+                ID = prefabList.IndexOf(prefab);
+                return true;
+            }
+        }
+        ID = 0;
+        return false;
+    }
+    //public static void SaveObject(ObjectPrefab objectPrefab)
+    public void SaveObject(GameObject objectPrefab)
     {
         prefabList.Add(objectPrefab);
     }
@@ -51,7 +70,7 @@ public class PrefabManager : MonoBehaviour
     [MenuItem("Chunks/Prefabs/Clear All Prefabs")]
     public static void ClearAllPrefabs()
     {
-        prefabList.Clear();
+        Singleton.prefabList.Clear();
     }
 #endif
 }

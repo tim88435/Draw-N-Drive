@@ -2,17 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Chunk : MonoBehaviour
+public class Chunk
 {
     public enum ChunkID
     {
         single = 0,
-        strip,
-        block,
+        railroad,
+        walmart,
+        park,
     }
+    public Transform chunkParent;
     public ChunkID chunkID = 0;
     public bool isRoadType = false;
-    [SerializeField] private List<ChunkObject>  objects = new List<ChunkObject>();
+    [SerializeField] public List<ChunkObject>  objects = new List<ChunkObject>();
     [System.Serializable]
     public struct ChunkObject
     {
@@ -21,6 +23,13 @@ public class Chunk : MonoBehaviour
         public Vector3 position;
         public Vector3 rotation;
         public Vector3 scale;
+        public ChunkObject(int ID, Transform objectTransform)
+        {
+            this.objectID = ID;
+            this.position = objectTransform.localPosition;
+            this.rotation = objectTransform.localEulerAngles;
+            this.scale = objectTransform.localScale;
+        }
     }
     /*
     public struct AnimatedGameObjects
@@ -32,13 +41,10 @@ public class Chunk : MonoBehaviour
     {
         foreach (ChunkObject item in objects)
         {
-            transform.position = item.position;
-            transform.rotation = Quaternion.Euler(item.rotation);
-            transform.localScale = item.scale;
+            Transform newGameObjectTransform = GameObject.Instantiate(PrefabManager.Singleton.GetObject(item.objectID), chunkParent).transform;
+            newGameObjectTransform.localPosition = item.position;
+            newGameObjectTransform.localRotation = Quaternion.Euler(item.rotation);
+            newGameObjectTransform.localScale = item.scale;
         }
-    }
-    private void Start()
-    {
-        SpawnObjects();
     }
 }
