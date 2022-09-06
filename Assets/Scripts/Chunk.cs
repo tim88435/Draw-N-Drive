@@ -12,12 +12,15 @@ public class Chunk : MonoBehaviour
     }
     public ChunkID chunkID = 0;
     public bool isRoadType = false;
-    [SerializeField] private List<ChunkObjects>  obj = new List<ChunkObjects>();
+    [SerializeField] private List<ChunkObject>  objects = new List<ChunkObject>();
     [System.Serializable]
-    public struct ChunkObjects
+    public struct ChunkObject
     {
-        [SerializeField] int objectIdentification;
-        [SerializeField] public Transform transform;
+        [Tooltip("Object Identification")]
+        public int objectID;
+        public Vector3 position;
+        public Vector3 rotation;
+        public Vector3 scale;
     }
     /*
     public struct AnimatedGameObjects
@@ -25,8 +28,17 @@ public class Chunk : MonoBehaviour
 
     }
     */
+    public void SpawnObjects()
+    {
+        foreach (ChunkObject item in objects)
+        {
+            transform.position = item.position;
+            transform.rotation = Quaternion.Euler(item.rotation);
+            transform.localScale = item.scale;
+        }
+    }
     private void Start()
     {
-        Debug.Log(obj[0].transform.);
+        SpawnObjects();
     }
 }
