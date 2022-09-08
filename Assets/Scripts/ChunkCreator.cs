@@ -2,29 +2,37 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
-using UnityEngine.SceneManagement;
-using System.Linq;
-using System.Security.Cryptography;
 
 public class ChunkCreator : EditorWindow
 {
-    [MenuItem("Chunks/Prefabs/Open Chunk Creator")]
+    [MenuItem("Chunks/Open Chunk Creator")]
     public static void ShowWindow()
     {
         EditorWindow.GetWindow(typeof(ChunkCreator)).autoRepaintOnSceneChange = true;
     }
     GameObject chunkObject;
     Chunk chunk;
-    private int chunkID;
+    [Range (0f, 1f)] private int chunkID;
     List<Chunk.ChunkObject> chunkObjects = new List<Chunk.ChunkObject>();
     
     void OnGUI()
     {
         GUILayout.Label("Chunk", EditorStyles.boldLabel);
-        chunkObject = EditorGUILayout.ObjectField(chunkObject, typeof(GameObject), true) as GameObject;
+        chunkObject = EditorGUILayout.ObjectField("Chunk Parent" ,chunkObject, typeof(GameObject), true) as GameObject;
         if (chunkObject == null)
         {
             return;
+        }
+        chunkID = EditorGUILayout.IntField("Chunk ID", chunkID);
+        if (ChunkManager.Singleton.savedChunks.Count > chunkID)
+        {
+            if (GUILayout.Button("Load Chunk"))
+            {
+                ClearObjects();
+                chunk = new Chunk(ChunkManager.Singleton.savedChunks[chunkID]);
+                chunk.chunkParent = chunkObject.transform;
+                chunk.SpawnObjects();
+            }
         }
         if (chunk == null)
         {
@@ -32,7 +40,7 @@ public class ChunkCreator : EditorWindow
             {
                 chunk = new Chunk();
             }
-            chunkID = int.MaxValue;
+            chunkID = ChunkManager.Singleton.savedChunks.Count;
         }
         else
         {
@@ -52,29 +60,36 @@ public class ChunkCreator : EditorWindow
             if (GUILayout.Button("Save Chunk"))
             {
                 RefreshObjects();
+                Chunk newChunk = new Chunk(chunk);
                 if (ChunkManager.Singleton.savedChunks.Count <= chunkID)
                 {
-                    ChunkManager.Singleton.savedChunks.Add(chunk);
+                    ChunkManager.Singleton.savedChunks.Add(newChunk);
                 }
                 else
                 {
-                    ChunkManager.Singleton.savedChunks[chunkID] = chunk;
+                    ChunkManager.Singleton.savedChunks[chunkID] = newChunk;
                 }
+                chunkID++;
                 chunk = new Chunk();
                 RefreshObjects();
-            }
-            EditorGUI.BeginChangeCheck();
-            chunkID = EditorGUILayout.IntField("Chunk ID", chunkID);
-            if (EditorGUI.EndChangeCheck())
-            {
-                if (ChunkManager.Singleton.savedChunks.Count > chunkID)
-                {
-                    ClearObjects();
-                    chunk = ChunkManager.Singleton.savedChunks[chunkID];
-                    chunk.SpawnObjects();
-                }
+                Repaint();
             }
         }
+        GUILayout.Label("Current Chunks", EditorStyles.boldLabel);
+        #region Show The Current Chunks List
+        SerializedObject chunkManager = new SerializedObject(ChunkManager.Singleton);
+        SerializedProperty chunkList = chunkManager.FindProperty("savedChunks");
+        EditorGUILayout.PropertyField(chunkList, true);
+        chunkManager.ApplyModifiedProperties();
+        #endregion
+        /*
+        GUILayout.Label("Current Prefabs", EditorStyles.boldLabel);
+        #region Show The Current Prefabs List
+        SerializedObject prefabManager = new SerializedObject(PrefabManager.Singleton);
+        SerializedProperty prefabList = prefabManager.FindProperty("prefabList");
+        EditorGUILayout.PropertyField(prefabList, true);
+        prefabManager.ApplyModifiedProperties();
+        #endregion*/
     }
     private void ClearObjects()
     {
