@@ -12,7 +12,13 @@ public class ChunkCreator : EditorWindow
     }
     GameObject chunkObject;
     Chunk chunk;
-    [Range (0f, 1f)] private int chunkID;
+    private int chunkID;
+    private int ChunkID
+    {
+        get { return chunkID; }
+        set { chunkID = Mathf.Max(value, 0);
+        }
+    }
     List<Chunk.ChunkObject> chunkObjects = new List<Chunk.ChunkObject>();
     
     void OnGUI()
@@ -23,13 +29,13 @@ public class ChunkCreator : EditorWindow
         {
             return;
         }
-        chunkID = EditorGUILayout.IntField("Chunk ID", chunkID);
-        if (ChunkManager.Singleton.savedChunks.Count > chunkID)
+        ChunkID = EditorGUILayout.IntField("Chunk ID", ChunkID);
+        if (ChunkManager.Singleton.savedChunks.Count > ChunkID)
         {
             if (GUILayout.Button("Load Chunk"))
             {
                 ClearObjects();
-                chunk = new Chunk(ChunkManager.Singleton.savedChunks[chunkID]);
+                chunk = new Chunk(ChunkManager.Singleton.savedChunks[ChunkID]);
                 chunk.chunkParent = chunkObject.transform;
                 chunk.SpawnObjects();
             }
@@ -40,7 +46,7 @@ public class ChunkCreator : EditorWindow
             {
                 chunk = new Chunk();
             }
-            chunkID = ChunkManager.Singleton.savedChunks.Count;
+            ChunkID = ChunkManager.Singleton.savedChunks.Count;
         }
         else
         {
@@ -61,15 +67,15 @@ public class ChunkCreator : EditorWindow
             {
                 RefreshObjects();
                 Chunk newChunk = new Chunk(chunk);
-                if (ChunkManager.Singleton.savedChunks.Count <= chunkID)
+                if (ChunkManager.Singleton.savedChunks.Count <= ChunkID)
                 {
                     ChunkManager.Singleton.savedChunks.Add(newChunk);
                 }
                 else
                 {
-                    ChunkManager.Singleton.savedChunks[chunkID] = newChunk;
+                    ChunkManager.Singleton.savedChunks[ChunkID] = newChunk;
                 }
-                chunkID++;
+                ChunkID++;
                 chunk = new Chunk();
                 RefreshObjects();
                 Repaint();
