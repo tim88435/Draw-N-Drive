@@ -39,7 +39,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float maxSpeed;
     [SerializeField] private float acceleration;
     [SerializeField] private float gravity = 10f;
-    [Range(0.90f,1.1f)]
+    [Range(0.95f,1.05f)]
     [SerializeField] float forgivenessRatio = 1;
     [SerializeField] float sensitivity;
     public float invinsibilitySeconds;

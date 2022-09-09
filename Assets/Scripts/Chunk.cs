@@ -62,14 +62,13 @@ public class Chunk : ScriptableObject
             scale = new Vector3(chunkObject.scale.x, chunkObject.scale.y, chunkObject.scale.z);
         }
     }
-    /*
-    public struct AnimatedGameObjects
-    {
-
-    }
-    */
     public void SpawnObjects()
     {
+        if (chunkParent == null)
+        {
+            Debug.LogWarning($"Chunk parent not attached");
+            return;
+        }
         foreach (ChunkObject item in objects)
         {
             Transform newGameObjectTransform = (PrefabUtility.InstantiatePrefab(PrefabManager.Singleton.GetObject(item.objectID), chunkParent) as GameObject).transform;
