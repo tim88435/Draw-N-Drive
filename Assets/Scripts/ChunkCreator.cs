@@ -35,7 +35,7 @@ public class ChunkCreator : EditorWindow
             if (GUILayout.Button("Load Chunk"))
             {
                 ClearObjects();
-                chunk = new Chunk(ChunkManager.Singleton.savedChunks[ChunkID]);
+                chunk = Chunk.SetChunk(ChunkManager.Singleton.savedChunks[ChunkID]);
                 chunk.chunkParent = chunkObject.transform;
                 chunk.SpawnObjects();
             }
@@ -44,7 +44,7 @@ public class ChunkCreator : EditorWindow
         {
             if (GUILayout.Button("New Chunk"))
             {
-                chunk = new Chunk();
+                chunk = CreateInstance<Chunk>();
             }
             ChunkID = ChunkManager.Singleton.savedChunks.Count;
         }
@@ -53,7 +53,7 @@ public class ChunkCreator : EditorWindow
             if (GUILayout.Button("Clear Chunk"))
             {
                 ClearObjects();
-                chunk = new Chunk();
+                chunk = CreateInstance<Chunk>();
             }
             GUILayout.Label("Chunk Information");
             chunk.chunkID = (Chunk.ChunkID)EditorGUILayout.EnumPopup("Chunk Type", chunk.chunkID);
@@ -66,7 +66,7 @@ public class ChunkCreator : EditorWindow
             if (GUILayout.Button("Save Chunk"))
             {
                 RefreshObjects();
-                Chunk newChunk = new Chunk(chunk);
+                Chunk newChunk = Chunk.SetChunk(chunk);
                 if (ChunkManager.Singleton.savedChunks.Count <= ChunkID)
                 {
                     ChunkManager.Singleton.savedChunks.Add(newChunk);
@@ -76,7 +76,7 @@ public class ChunkCreator : EditorWindow
                     ChunkManager.Singleton.savedChunks[ChunkID] = newChunk;
                 }
                 ChunkID++;
-                chunk = new Chunk();
+                chunk = CreateInstance<Chunk>();
                 RefreshObjects();
                 Repaint();
             }

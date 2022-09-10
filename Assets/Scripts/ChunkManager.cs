@@ -92,7 +92,7 @@ public class ChunkManager : MonoBehaviour
     }
     private Chunk SpawnOneChunk(Vector2Int Coordinates, bool isRoadType, ChunkID type, float rotation)
     {
-        Chunk newChunk = new Chunk(GetChunk(isRoadType));
+        Chunk newChunk = SetChunk(GetChunk(isRoadType));
         GameObject chunkParent = new GameObject();
         chunkParent.transform.position = new Vector3(Coordinates.x, 0, Coordinates.y);
         chunkParent.transform.Rotate(0, rotation, 0);
@@ -121,8 +121,8 @@ public class ChunkManager : MonoBehaviour
         if (availableChunks.Count == 0)
         {
             Debug.LogWarning($"No chunk available to spawn!");
-            return new Chunk();
+            return ScriptableObject.CreateInstance<Chunk>();
         }
-        return availableChunks[Random.Range(0, availableChunks.Count - 1)];
+        return availableChunks[Random.Range(0, availableChunks.Count)];
     }
 }

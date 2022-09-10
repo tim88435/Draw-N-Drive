@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using static Chunk;
 
 public class Chunk : ScriptableObject
 {
@@ -76,5 +77,17 @@ public class Chunk : ScriptableObject
             newGameObjectTransform.localRotation = Quaternion.Euler(item.rotation);
             newGameObjectTransform.localScale = item.scale;
         }
+    }
+    public static Chunk SetChunk(Chunk template)
+    {
+        Chunk chunk = CreateInstance<Chunk>();
+        chunk.chunkID = template.chunkID;
+        chunk.isRoadType = template.isRoadType;
+        for (int i = 0; i < template.objects.Count; i++)
+        {
+            ChunkObject newObject = new ChunkObject(template.objects[i]);
+            chunk.objects.Add(newObject);
+        }
+        return chunk;
     }
 }

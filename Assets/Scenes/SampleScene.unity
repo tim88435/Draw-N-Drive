@@ -512,6 +512,26 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 176386148}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &182882183
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4dc1bfa4fdeb7cb469dbf8dcffd7df82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chunkParent: {fileID: 0}
+  chunkID: 0
+  isRoadType: 1
+  objects:
+  - objectID: 0
+    position: {x: 0, y: 0, z: 0}
+    rotation: {x: -0, y: 0, z: 0}
+    scale: {x: 1, y: 1, z: 1}
 --- !u!1 &227252038
 GameObject:
   m_ObjectHideFlags: 0
@@ -609,6 +629,34 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 227252038}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &248408012
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4dc1bfa4fdeb7cb469dbf8dcffd7df82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chunkParent: {fileID: 0}
+  chunkID: 0
+  isRoadType: 0
+  objects:
+  - objectID: 0
+    position: {x: 0, y: 0, z: 0}
+    rotation: {x: -0, y: 0, z: 0}
+    scale: {x: 1, y: 1, z: 1}
+  - objectID: 1
+    position: {x: -0.66, y: 0.49, z: -2.63}
+    rotation: {x: -0, y: 0, z: 0}
+    scale: {x: 1, y: 1, z: 1}
+  - objectID: 1
+    position: {x: 1.91, y: 0.46, z: 2.47}
+    rotation: {x: -0, y: 0, z: 0}
+    scale: {x: 1, y: 1, z: 1}
 --- !u!1 &284231451
 GameObject:
   m_ObjectHideFlags: 0
@@ -827,7 +875,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 353770785}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.385574, y: 6.8684206, z: -7.789058}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -931,6 +979,34 @@ Transform:
   m_Father: {fileID: 427203786}
   m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &392525959
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4dc1bfa4fdeb7cb469dbf8dcffd7df82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chunkParent: {fileID: 0}
+  chunkID: 0
+  isRoadType: 1
+  objects:
+  - objectID: 0
+    position: {x: 0, y: 0, z: 0}
+    rotation: {x: -0, y: 0, z: 0}
+    scale: {x: 1, y: 1, z: 1}
+  - objectID: 1
+    position: {x: -3.74, y: 0.49, z: -4.13}
+    rotation: {x: -0, y: 0, z: 0}
+    scale: {x: 1, y: 1, z: 1}
+  - objectID: 1
+    position: {x: 4.44, y: 0.46, z: 4.34}
+    rotation: {x: -0, y: 0, z: 0}
+    scale: {x: 1, y: 1, z: 1}
 --- !u!1 &427203785
 GameObject:
   m_ObjectHideFlags: 0
@@ -987,6 +1063,30 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &515095799
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4dc1bfa4fdeb7cb469dbf8dcffd7df82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chunkParent: {fileID: 0}
+  chunkID: 0
+  isRoadType: 0
+  objects:
+  - objectID: 1
+    position: {x: 0, y: 0, z: 0}
+    rotation: {x: -0, y: 0, z: 0}
+    scale: {x: 1, y: 1, z: 1}
+  - objectID: 0
+    position: {x: 0, y: 0, z: 0}
+    rotation: {x: -0, y: 0, z: 0}
+    scale: {x: 1, y: 1, z: 1}
 --- !u!1 &545903897
 GameObject:
   m_ObjectHideFlags: 0
@@ -1275,7 +1375,7 @@ Transform:
   m_Father: {fileID: 427203786}
   m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &741756776
+--- !u!114 &734432155
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1289,10 +1389,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   chunkParent: {fileID: 0}
   chunkID: 0
-  isRoadType: 0
+  isRoadType: 1
   objects:
   - objectID: 1
-    position: {x: 0, y: 0, z: 0}
+    position: {x: -1.47, y: 0.81, z: -2.37}
     rotation: {x: -0, y: 0, z: 0}
     scale: {x: 1, y: 1, z: 1}
   - objectID: 0
@@ -6579,30 +6679,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1102015808}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &1116156915
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4dc1bfa4fdeb7cb469dbf8dcffd7df82, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  chunkParent: {fileID: 0}
-  chunkID: 0
-  isRoadType: 0
-  objects:
-  - objectID: 1
-    position: {x: -3, y: 0.81, z: 2.29}
-    rotation: {x: -0, y: 0, z: 0}
-    scale: {x: 1, y: 1, z: 1}
-  - objectID: 0
-    position: {x: 0, y: 0, z: 0}
-    rotation: {x: -0, y: 0, z: 0}
-    scale: {x: 1, y: 1, z: 1}
 --- !u!1 &1202198318
 GameObject:
   m_ObjectHideFlags: 0
@@ -6797,30 +6873,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1243523395}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &1255541412
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4dc1bfa4fdeb7cb469dbf8dcffd7df82, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  chunkParent: {fileID: 0}
-  chunkID: 0
-  isRoadType: 1
-  objects:
-  - objectID: 1
-    position: {x: -1.47, y: 0.81, z: -2.37}
-    rotation: {x: -0, y: 0, z: 0}
-    scale: {x: 1, y: 1, z: 1}
-  - objectID: 0
-    position: {x: 0, y: 0, z: 0}
-    rotation: {x: -0, y: 0, z: 0}
-    scale: {x: 1, y: 1, z: 1}
 --- !u!1 &1261813026
 GameObject:
   m_ObjectHideFlags: 0
@@ -7437,6 +7489,30 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1582993320}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1665029979
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4dc1bfa4fdeb7cb469dbf8dcffd7df82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chunkParent: {fileID: 0}
+  chunkID: 0
+  isRoadType: 0
+  objects:
+  - objectID: 1
+    position: {x: 3.58, y: 0.81, z: 0}
+    rotation: {x: -0, y: 0, z: 0}
+    scale: {x: 1, y: 1, z: 1}
+  - objectID: 0
+    position: {x: 0, y: 0, z: 0}
+    rotation: {x: -0, y: 0, z: 0}
+    scale: {x: 1, y: 1, z: 1}
 --- !u!1 &1686332779
 GameObject:
   m_ObjectHideFlags: 0
@@ -7483,10 +7559,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   savedChunks:
-  - {fileID: 741756776}
-  - {fileID: 1919427540}
-  - {fileID: 1255541412}
-  - {fileID: 1116156915}
+  - {fileID: 515095799}
+  - {fileID: 1665029979}
+  - {fileID: 734432155}
+  - {fileID: 182882183}
+  - {fileID: 248408012}
+  - {fileID: 392525959}
   spawnDistance: 50
 --- !u!4 &1686332782
 Transform:
@@ -7835,30 +7913,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1840786653}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &1919427540
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4dc1bfa4fdeb7cb469dbf8dcffd7df82, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  chunkParent: {fileID: 0}
-  chunkID: 0
-  isRoadType: 0
-  objects:
-  - objectID: 1
-    position: {x: 3.58, y: 0.81, z: 0}
-    rotation: {x: -0, y: 0, z: 0}
-    scale: {x: 1, y: 1, z: 1}
-  - objectID: 0
-    position: {x: 0, y: 0, z: 0}
-    rotation: {x: -0, y: 0, z: 0}
-    scale: {x: 1, y: 1, z: 1}
 --- !u!1 &1999717687
 GameObject:
   m_ObjectHideFlags: 0
