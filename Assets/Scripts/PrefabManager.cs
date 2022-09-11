@@ -27,26 +27,24 @@ public class PrefabManager: MonoBehaviour
     {
         Singleton = this;
     }
-    
+
     #endregion
-    /*
-    public struct ObjectPrefab
-    {
-        public int objectID;
-        public GameObject prefab;
-        public ObjectPrefab(int objectID, GameObject prefab)
-        {
-            this.objectID = objectID;
-            this.prefab = prefab;
-        }
-    }*/
-    //public static List<ObjectPrefab> prefabList = new List<ObjectPrefab>();
-    public List<GameObject> prefabList = new List<GameObject>();
+    [SerializeField] private List<GameObject> prefabList = new List<GameObject>();//list of saved object prefabs
+    /// <summary>
+    /// Gets the GameObject prefab in the prefab list based on the position in the Prefab List
+    /// </summary>
+    /// <param name="index"></param>
+    /// <returns></returns>
     public GameObject GetObject(int index)
     {
-        //return prefabList[index].prefab;
         return prefabList[index];
     }
+    /// <summary>
+    /// Returns if the gameobject is a prefab, and the prefab ID in the saved prefab list
+    /// </summary>
+    /// <param name="gameObject">Object to check if it is a prefab</param>
+    /// <param name="ID">Object ID in the prefab list</param>
+    /// <returns>Is the gameobject a prefab?</returns>
     public bool CheckIfObject(GameObject gameObject, out int ID)
     {
         GameObject prefab;
@@ -61,16 +59,15 @@ public class PrefabManager: MonoBehaviour
         ID = 0;
         return false;
     }
-    //public static void SaveObject(ObjectPrefab objectPrefab)
-    public void SaveObject(GameObject objectPrefab)
-    {
-        prefabList.Add(objectPrefab);
-    }
+    /*
 #if UNITY_EDITOR
     [MenuItem("Chunks/Prefabs/Clear All Prefabs")]
-    public static void ClearAllPrefabs()
+    public static void ClearAllPrefabsAndChunks()//removes ALL the saved prefabs
     {
         Singleton.prefabList.Clear();
+        //Removes LL the saved chunks to make sure that there are no null references when making chunks
+        ChunkManager.ClearSavedChunks();
     }
 #endif
+    */
 }

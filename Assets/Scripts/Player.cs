@@ -15,7 +15,7 @@ public class Player : MonoBehaviour
             {
                 _singleton = value;
             }
-            else if (_singleton != value)
+            else if (_singleton != value)//making sure there is only one instance of this class
             {
                 Debug.LogWarning($"{nameof(value)} already exists in the current scene. Deleting clone");
                 Destroy(value.gameObject);
@@ -24,6 +24,8 @@ public class Player : MonoBehaviour
     }
     #endregion
     #region Properties
+    [Tooltip("Current Health of the player")]
+    [Range(0, 3)]
     [SerializeField] private int _health;
     public int Health
     {
@@ -31,6 +33,7 @@ public class Player : MonoBehaviour
         set
         {
             _health = value;
+            //update the smoke
             switch (_health)
             {
                 case 3:
@@ -44,8 +47,8 @@ public class Player : MonoBehaviour
                     _particleSystem.Play();
                     settings.startColor = Color.black;
                     break;
-                default:
-#if UNITY_EDITOR
+                default://if the health is not within 1, 2 or 3, assume that the plyer is dead
+#if UNITY_EDITOR//if in the unity editor, stop playing when health reaches 0
                     UnityEditor.EditorApplication.ExitPlaymode();
 #endif
                     break;
@@ -53,21 +56,16 @@ public class Player : MonoBehaviour
         }
     }
     #endregion
-    private ParticleSystem.MainModule settings;
-    private ParticleSystem _particleSystem;
+    private ParticleSystem.MainModule settings;//reference to the particle system's main variables
+    private ParticleSystem _particleSystem;//reference to the partilce system 
     private void OnValidate()
     {
-        Singleton = this;
+        Singleton = this;//setting this as the only instance
     }
     private void Start()
     {
-        _particleSystem = GetComponent<ParticleSystem>();
-        settings = _particleSystem.main;
-        //settings.startColor = Color.black;
-        Health = 3;
-    }
-    private void Update()
-    {
-        
+        _particleSystem = GetComponent<ParticleSystem>();//sets reference fot the partilce system
+        settings = _particleSystem.main;//sets reference fot the partilce system's main variables
+        Health = 3;//sets the main to 3
     }
 }
