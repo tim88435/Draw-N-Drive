@@ -34,14 +34,14 @@ public class Player : MonoBehaviour
             switch (_health)
             {
                 case 3:
-                    particleSystem.Stop();
+                    _particleSystem.Stop();
                     break;
                 case 2:
-                    particleSystem.Play();
+                    _particleSystem.Play();
                     settings.startColor = Color.white;
                     break;
                 case 1:
-                    particleSystem.Play();
+                    _particleSystem.Play();
                     settings.startColor = Color.black;
                     break;
                 default:
@@ -54,20 +54,20 @@ public class Player : MonoBehaviour
     }
     #endregion
     private ParticleSystem.MainModule settings;
-    private ParticleSystem particleSystem;
+    private ParticleSystem _particleSystem;
     private void OnValidate()
     {
         Singleton = this;
     }
     private void Start()
     {
-        particleSystem = GetComponent<ParticleSystem>();
-        settings = particleSystem.main;
+        _particleSystem = GetComponent<ParticleSystem>();
+        settings = _particleSystem.main;
         //settings.startColor = Color.black;
         Health = 3;
     }
     private void Update()
     {
-        //Health = _health;
+        
     }
 }
