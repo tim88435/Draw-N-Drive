@@ -35,6 +35,10 @@ public class ChunkCreator : EditorWindow
             return;//if the user hasn't thrown in the parent yet, stop there
         }
         ChunkID = EditorGUILayout.IntField("Chunk ID", ChunkID);//allow the player to change what chunk ID they're working on
+        if (chunk != null)
+        {
+            chunk.name = EditorGUILayout.TextField("Chunk Name:", chunk.name);
+        }
         if (ChunkManager.Singleton.savedChunks.Count > ChunkID)//if the chunk id is less or equal to the number of chunks saved
         {
             if (GUILayout.Button("Load Chunk"))//allow the user to load the saved chunk

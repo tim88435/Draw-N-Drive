@@ -43,7 +43,7 @@ public class PlayerMovement : MonoBehaviour
     [Tooltip("Gravity to apply to the player in unity units per second squared")]
     [SerializeField] private float gravity = 10f;
     [Tooltip("Ratio by how much the player would be forgiven when the player has decelerated (e.g. bumped into an object)")]
-    [Range(0.95f,1.05f)]
+    [Range(0.8f,1f)]
     [SerializeField] private float forgivenessRatio = 1;
     [Tooltip("Speed by which the player can move left or right")]
     [SerializeField] private float sensitivity;

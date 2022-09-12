@@ -80,6 +80,7 @@ public class Chunk : ScriptableObject
     public static Chunk NewChunk(Chunk template)//pretty much a constructor for a new chunk, (based on an existing chunk)
     {
         Chunk chunk = CreateInstance<Chunk>();//CreateInstance for scriptable objects (instead of using 'new')
+        chunk.name = template.name;//sets the name of the new chunk so that it's easier to find it in the saved chunk list
         chunk.chunkID = template.chunkID;//set chunkID to template's chunkID
         chunk.isRoadType = template.isRoadType;//set isRoadType to template's isRoadType
         //add the chunk objects to the new chunk
