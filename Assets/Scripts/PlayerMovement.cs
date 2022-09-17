@@ -24,13 +24,13 @@ public class PlayerMovement : MonoBehaviour
     }
     #endregion
     #region Properties
-    [SerializeField] private float _speed;//current speed of the player
-    public float Speed
+    [SerializeField] private Vector3 _velocity;//current velosity of the player
+    public Vector3 Velocity
     {
-        get { return _speed; }
+        get { return _velocity; }
         set
         {
-            _speed = value;
+            _velocity = value;
         }
     }
     #endregion
@@ -58,22 +58,24 @@ public class PlayerMovement : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        if (lastFixedUpdatePosition + Speed * forgivenessRatio > transform.position.z)//if the player has hit something
+        if (lastFixedUpdatePosition + Velocity.z * forgivenessRatio > transform.position.z)//if the player has hit something
         {
             if (timeSinceLastHit + invinsibilitySeconds < Time.time)//if the player does not have invincibility frames
             {
-                Speed = 0;//set the player's speed to 0
+                Velocity = Vector3.zero;//set the player's speed to 0
                 Player.Singleton.Health--;//reduce the player's health
                 //sets the time since the player has last lit an object to give the player invinsibility
                 timeSinceLastHit = Time.time;
             }
         }
-        lastFixedUpdatePosition = transform.position.z;//updates the position to use when checking decelerattion
-        Speed += acceleration * Time.fixedDeltaTime;//increases the speed based on the set acceleration
-        //makes sure the player isn't moving back, and isn't going faster than they should be
-        Speed = Mathf.Clamp(Speed, 0, maxSpeed);
-        //moves the player forward, horizontally based on input and down based on gravity
-        player.Move(new Vector3(Input.GetAxis("Horizontal") * sensitivity, -gravity * Time.fixedDeltaTime, Speed));
+        lastFixedUpdatePosition = transform.position.z;//updates the position to use when checking deceleration
+        //increases the speed based on the set acceleration and adds gravity
+        Velocity += (Vector3.forward * acceleration + (Vector3.down * gravity)) * Time.fixedDeltaTime;
+        //makes sure the player isn't moving back, and isn't going faster than they should be,
+        //and resets the vertical velosity if the playeris on the ground
+        Velocity = new Vector3 (Velocity.x, Velocity.y <= 0 && player.isGrounded ? 0 : Velocity.y, Mathf.Clamp(Velocity.z, 0, maxSpeed));
+        //moves the player forward, horizontally based on input
+        player.Move(new Vector3(Input.GetAxis("Horizontal") * sensitivity, Velocity.y, Velocity.z));
     }
     private void OnValidate()
     {

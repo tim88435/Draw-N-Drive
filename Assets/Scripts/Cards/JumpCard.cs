@@ -1,11 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-[CreateAssetMenu(menuName = "ScriptableObjects/Cards/Jump Card")]
+[CreateAssetMenu(menuName = "ScriptableObjects/Cards/Jump Card")]//to be able to make the scriptableObject in the project
 public class JumpCard : Card
 {
-    public override void Play()
+    public override void Play()//plays the card
     {
-        Player.Singleton.transform.Translate(0, 10, 0);
+        Debug.Log("Plays Jump card");
     }
 }
