@@ -1331,6 +1331,30 @@ Transform:
   m_Father: {fileID: 427203786}
   m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &826643114
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4dc1bfa4fdeb7cb469dbf8dcffd7df82, type: 3}
+  m_Name: Motorcycle Chunk
+  m_EditorClassIdentifier: 
+  chunkParent: {fileID: 0}
+  chunkID: 0
+  isRoadType: 1
+  objects:
+  - objectID: 2
+    position: {x: 0, y: 0, z: 0}
+    rotation: {x: -0, y: 0, z: 0}
+    scale: {x: 1, y: 1, z: 1}
+  - objectID: 3
+    position: {x: -1.07, y: 1.4, z: 0.66}
+    rotation: {x: -0, y: 236.39343, z: 0}
+    scale: {x: 0.019634, y: 0.019634, z: 0.019634}
 --- !u!1 &880274787
 GameObject:
   m_ObjectHideFlags: 0
@@ -1525,6 +1549,30 @@ Transform:
   m_Father: {fileID: 427203786}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &934840699
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4dc1bfa4fdeb7cb469dbf8dcffd7df82, type: 3}
+  m_Name: Barrel avoid road
+  m_EditorClassIdentifier: 
+  chunkParent: {fileID: 0}
+  chunkID: 0
+  isRoadType: 1
+  objects:
+  - objectID: 2
+    position: {x: 0, y: 0, z: 0}
+    rotation: {x: -0, y: 0, z: 0}
+    scale: {x: 1, y: 1, z: 1}
+  - objectID: 1
+    position: {x: 1.45, y: 0.95, z: 2.22}
+    rotation: {x: -0, y: 0, z: 0}
+    scale: {x: 1, y: 1, z: 1}
 --- !u!1 &995301370
 GameObject:
   m_ObjectHideFlags: 0
@@ -6637,30 +6685,6 @@ MonoBehaviour:
     position: {x: 2.75, y: 0.81, z: 0.91}
     rotation: {x: 326.00284, y: 0, z: 0}
     scale: {x: 4.5376606, y: 0.3515343, z: 3.6963665}
---- !u!114 &1182455855
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4dc1bfa4fdeb7cb469dbf8dcffd7df82, type: 3}
-  m_Name: Barrel avoid road
-  m_EditorClassIdentifier: 
-  chunkParent: {fileID: 0}
-  chunkID: 0
-  isRoadType: 1
-  objects:
-  - objectID: 2
-    position: {x: 0, y: 0, z: 0}
-    rotation: {x: -0, y: 0, z: 0}
-    scale: {x: 1, y: 1, z: 1}
-  - objectID: 1
-    position: {x: 1.45, y: 0.95, z: 2.22}
-    rotation: {x: -0, y: 0, z: 0}
-    scale: {x: 1, y: 1, z: 1}
 --- !u!1 &1202198318
 GameObject:
   m_ObjectHideFlags: 0
@@ -7525,6 +7549,7 @@ MonoBehaviour:
   - {fileID: 7531428352891927016, guid: 131cd5b6ecb0bc741b59c34d90eede47, type: 3}
   - {fileID: 1096513293090722431, guid: 538e0aa5d4ecadb40bf4cb1e02c1f685, type: 3}
   - {fileID: 1527896831998742135, guid: c199b5a15b0d15a4ca12ac6780546296, type: 3}
+  - {fileID: 919132149155446097, guid: a82c6150fa4693940b99dbadf5732455, type: 3}
 --- !u!114 &1686332781
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7539,8 +7564,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   savedChunks:
   - {fileID: 1595341738}
-  - {fileID: 2120703129}
-  - {fileID: 1182455855}
+  - {fileID: 826643114}
+  - {fileID: 934840699}
   - {fileID: 649579146}
   - {fileID: 600854551}
   - {fileID: 1173334352}
@@ -8190,27 +8215,3 @@ Transform:
   m_Father: {fileID: 427203786}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2120703129
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4dc1bfa4fdeb7cb469dbf8dcffd7df82, type: 3}
-  m_Name: Side Block Chunk
-  m_EditorClassIdentifier: 
-  chunkParent: {fileID: 0}
-  chunkID: 0
-  isRoadType: 0
-  objects:
-  - objectID: 2
-    position: {x: 0, y: 0, z: 0}
-    rotation: {x: -0, y: 0, z: 0}
-    scale: {x: 1, y: 1, z: 1}
-  - objectID: 0
-    position: {x: 2.59, y: 0.47, z: 0.41}
-    rotation: {x: -0, y: 0, z: 0}
-    scale: {x: 4.4318, y: 1, z: 6.0498}
