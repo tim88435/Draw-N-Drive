@@ -112,7 +112,15 @@ public class ChunkManager : MonoBehaviour
     /// <returns></returns>
     private Chunk SpawnOneChunk(Vector2Int Coordinates, bool isRoadType, Chunk.ChunkID type, float rotation)
     {
-        Chunk newChunk = Chunk.NewChunk(GetChunk(isRoadType));//instansiate a new chunk based on a saved chunk (gotten from the GetChunk generator)
+        Chunk newChunk;
+        if (Coordinates == Vector2Int.zero)
+        {
+            newChunk = Chunk.NewChunk(savedChunks[0]);//instansiate the first chunk in the saved chunks (hopefully a blank road chunk)
+        }
+        else
+        {
+            newChunk = Chunk.NewChunk(GetChunk(isRoadType));//instansiate a new chunk based on a saved chunk (gotten from the GetChunk generator)
+        }
         GameObject chunkParent = new GameObject();//makes a new parent for the chunk
         chunkParent.transform.position = new Vector3(Coordinates.x, 0, Coordinates.y);//moves the parent to the correct chunk location
         chunkParent.transform.Rotate(0, rotation, 0);//rotated the chunk in accordance to the spawn positions
