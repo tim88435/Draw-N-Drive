@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44317183, g: 0.49239826, b: 0.5720867, a: 1}
+  m_IndirectSpecularColor: {r: 0.4431722, g: 0.49239886, b: 0.5720878, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -7602,7 +7602,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1452744391}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 2.5}
+  m_LocalPosition: {x: 0, y: 0, z: 2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -8381,7 +8381,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 11e6d5301a693144c9bab0d42c0e0547, type: 2}
   maxCards: 3
   panelTransform: {fileID: 1907993848}
-  _debug: 1
+  _debug: 0
 --- !u!114 &1686332784
 MonoBehaviour:
   m_ObjectHideFlags: 0

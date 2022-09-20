@@ -6,6 +6,11 @@ public class Projectile : MonoBehaviour
 {
     [SerializeField] private float _moveSpd;
 
+    private void Start()
+    {
+        _moveSpd += PlayerMovement.Singleton.Velocity.z;
+    }
+
     private void FixedUpdate()
     {
         transform.position += Vector3.forward * _moveSpd * Time.fixedDeltaTime;
