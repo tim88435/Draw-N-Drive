@@ -58,24 +58,25 @@ public class PlayerMovement : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        if (lastFixedUpdatePosition + Velocity.z * forgivenessRatio > transform.position.z)//if the player has hit something
-        {
-            if (timeSinceLastHit + invinsibilitySeconds < Time.time)//if the player does not have invincibility frames
-            {
-                Velocity = Vector3.zero;//set the player's speed to 0
-                Player.Singleton.Health--;//reduce the player's health
-                //sets the time since the player has last lit an object to give the player invinsibility
-                timeSinceLastHit = Time.time;
-            }
-        }
-        lastFixedUpdatePosition = transform.position.z;//updates the position to use when checking deceleration
         //increases the speed based on the set acceleration and adds gravity
         Velocity += (Vector3.forward * acceleration + (Vector3.down * gravity)) * Time.fixedDeltaTime;
         //makes sure the player isn't moving back, and isn't going faster than they should be,
         //and resets the vertical velosity if the playeris on the ground
         Velocity = new Vector3 (Velocity.x, Velocity.y <= 0 && player.isGrounded ? 0 : Velocity.y, Mathf.Clamp(Velocity.z, 0, maxSpeed));
         //moves the player forward, horizontally based on input
-        player.Move(new Vector3(Input.GetAxis("Horizontal") * sensitivity, Velocity.y, Velocity.z));
+        player.Move(new Vector3(Input.GetAxis("Horizontal") * sensitivity, Velocity.y, Velocity.z) * GameManager.Singleton.GameSpeed);
+        timeSinceLastHit += Time.fixedDeltaTime * GameManager.Singleton.GameSpeed;
+        if (lastFixedUpdatePosition + Velocity.z * forgivenessRatio * GameManager.Singleton.GameSpeed > transform.position.z && GameManager.Singleton.GameSpeed > 0)//if the player has hit something
+        {
+            if (timeSinceLastHit > invinsibilitySeconds)//if the player does not have invincibility frames
+            {
+                Velocity = Vector3.zero;//set the player's speed to 0
+                Player.Singleton.Health--;//reduce the player's health
+                //sets the time since the player has last lit an object to give the player invinsibility
+                timeSinceLastHit = 0;
+            }
+        }
+        lastFixedUpdatePosition = transform.position.z;//updates the position to use when checking deceleration
     }
     private void OnValidate()
     {

@@ -62,9 +62,9 @@ public class CardHandler : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
-            activeCards[selectedCard].Value.Play();
-            Destroy(activeCards[selectedCard].Key);
-            activeCards.RemoveAt(selectedCard);
+            activeCards[selectedCard].Value.Play();//run the Play method for the card
+            Destroy(activeCards[selectedCard].Key);//destroy the card gameobject on the next frame
+            activeCards.RemoveAt(selectedCard);//remove the card from the list
             return true;
         }
         return false;
@@ -78,15 +78,15 @@ public class CardHandler : MonoBehaviour
         //allow the player to change chich cards is selected, and make sure the selected card index is under the card count
         selectedCard = Mathf.Clamp(selectedCard + (Input.GetKeyDown(KeyCode.LeftArrow) ? -1 : Input.GetKeyDown(KeyCode.RightArrow) ? 1 : 0), 0, activeCards.Count - 1);
         //check each card, and if it's the selected card, display it above the others
-        for (int i = 0; i < activeCards.Count; i++)
+        for (int i = 0; i < activeCards.Count; i++)//check each card
         {
-            if (i == selectedCard)
+            if (i == selectedCard)//if it's the selected card
             {
-                activeCards[i].Key.transform.GetChild(0).localPosition = Vector3.up * 100;
+                activeCards[i].Key.transform.GetChild(0).localPosition = Vector3.up * 100;//show the card above the others
             }
-            else
+            else//if it's not
             {
-                activeCards[i].Key.transform.GetChild(0).localPosition = Vector3.zero;
+                activeCards[i].Key.transform.GetChild(0).localPosition = Vector3.zero;//set the position back to normal
             }
         }
     }
@@ -97,31 +97,32 @@ public class CardHandler : MonoBehaviour
     /// <returns>If the card was able to be added to the hand</returns>
     private bool AddCardToHand(Card card)
     {
-        if (activeCards.Count >= maxCards)
+        if (activeCards.Count >= maxCards)//if the hand is full
         {
-            return false;
+            return false;//return that you can't add any more cards
         }
+        //make a new card in the scene in the correct format ready to add to the list of cards
         KeyValuePair<GameObject, Card> newCard = new KeyValuePair<GameObject, Card>(UnityEditor.PrefabUtility.InstantiatePrefab(cardPrefab, panelTransform) as GameObject, card);
-        newCard.Key.transform.GetChild(0).GetComponent<RawImage>().texture = newCard.Value.cardTexture;
-        activeCards.Add(newCard);
-        return true;
+        newCard.Key.transform.GetChild(0).GetComponent<RawImage>().texture = newCard.Value.cardTexture;//set the correct texture
+        activeCards.Add(newCard);//add the card to the list of cards in the hand
+        return true;//return that the card has been added
     }
     /// <returns>A random card from the saved card list</returns>
     private Card GetRandomCard(Card[] list)
     {
-        if (list.Length == 0)
+        if (list.Length == 0)//if there are no saved cards 
         {
             return null;
         }
-        return list[Random.Range(0, list.Length)];
+        return list[Random.Range(0, list.Length)];//otherwise return a random card
     }
     /// <summary>
     /// Continuous method to keep giving the player cards
     /// </summary>
     private IEnumerator DrawCards()
     {
-        yield return new WaitForSeconds(1);
-        AddCardToHand(GetRandomCard(cards));
-        StartCoroutine(DrawCards());
+        yield return new WaitForSeconds(1);//wait 1 second (for development)
+        AddCardToHand(GetRandomCard(cards));//add a random card
+        StartCoroutine(DrawCards());//start this method again
     }
 }
