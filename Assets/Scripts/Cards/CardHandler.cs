@@ -41,6 +41,10 @@ public class CardHandler : MonoBehaviour
     private int selectedCard;//index of the current selected card
     [Tooltip("Panel parent to which under to instanciate cards")]
     [SerializeField] private Transform panelTransform;
+
+    [SerializeField] private bool _debug;
+    
+
     private void Start()
     {
         StartCoroutine(DrawCards());//start drawing the cards (temporary?)
@@ -114,7 +118,7 @@ public class CardHandler : MonoBehaviour
         {
             return null;
         }
-        return list[Random.Range(0, list.Length)];//otherwise return a random card
+        return _debug ? list[0] : list[Random.Range(0, list.Length)];//otherwise return a random card
     }
     /// <summary>
     /// Continuous method to keep giving the player cards

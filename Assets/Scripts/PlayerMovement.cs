@@ -33,6 +33,9 @@ public class PlayerMovement : MonoBehaviour
             _velocity = value;
         }
     }
+    [Tooltip("The position to spawn a projectile from")]
+    [SerializeField] private Transform _bulletSpawn;
+    public Transform BulletSpawn { get => _bulletSpawn; }
     #endregion
     #region Variables
     private CharacterController player;//character controller reference
@@ -49,6 +52,9 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float sensitivity;
     [Tooltip("Seconds of invincibility the player is given when they hit an object")]
     [SerializeField] private float invinsibilitySeconds;
+    [Tooltip("Maximum upward velocity during which the player is safe from collision")]
+    [SerializeField] private float jumpSafety = 0.8f;
+    
     private float timeSinceLastHit;//time since the player has last hit an object and lost health
     private float lastFixedUpdatePosition = 0;//horizontal position that the player was at the last fixed update
     #endregion
@@ -59,14 +65,14 @@ public class PlayerMovement : MonoBehaviour
     private void FixedUpdate()
     {
         //increases the speed based on the set acceleration and adds gravity
-        Velocity += (Vector3.forward * acceleration + (Vector3.down * gravity)) * Time.fixedDeltaTime;
+        Velocity += Vector3.forward * acceleration + (Vector3.down * gravity);
         //makes sure the player isn't moving back, and isn't going faster than they should be,
         //and resets the vertical velosity if the playeris on the ground
         Velocity = new Vector3 (Velocity.x, Velocity.y <= 0 && player.isGrounded ? 0 : Velocity.y, Mathf.Clamp(Velocity.z, 0, maxSpeed));
         //moves the player forward, horizontally based on input
-        player.Move(new Vector3(Input.GetAxis("Horizontal") * sensitivity, Velocity.y, Velocity.z) * GameManager.Singleton.GameSpeed);
+        player.Move(new Vector3(Input.GetAxis("Horizontal") * sensitivity, Velocity.y, Velocity.z) * GameManager.Singleton.GameSpeed * Time.fixedDeltaTime);
         timeSinceLastHit += Time.fixedDeltaTime * GameManager.Singleton.GameSpeed;
-        if (lastFixedUpdatePosition + Velocity.z * forgivenessRatio * GameManager.Singleton.GameSpeed > transform.position.z && GameManager.Singleton.GameSpeed > 0)//if the player has hit something
+        if (Velocity.y <= jumpSafety && lastFixedUpdatePosition + Velocity.z * forgivenessRatio * GameManager.Singleton.GameSpeed * Time.fixedDeltaTime > transform.position.z && GameManager.Singleton.GameSpeed > 0)//if the player has hit something
         {
             if (timeSinceLastHit > invinsibilitySeconds)//if the player does not have invincibility frames
             {
