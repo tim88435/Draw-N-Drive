@@ -65,12 +65,12 @@ public class PlayerMovement : MonoBehaviour
     private void FixedUpdate()
     {
         //increases the speed based on the set acceleration and adds gravity
-        Velocity += Vector3.forward * acceleration + (Vector3.down * gravity);
+        Velocity += new Vector3(Input.GetAxis("Horizontal") * sensitivity, gravity, acceleration);
         //makes sure the player isn't moving back, and isn't going faster than they should be,
         //and resets the vertical velosity if the playeris on the ground
         Velocity = new Vector3 (Velocity.x, Velocity.y <= 0 && player.isGrounded ? 0 : Velocity.y, Mathf.Clamp(Velocity.z, 0, maxSpeed));
         //moves the player forward, horizontally based on input
-        player.Move(new Vector3(Input.GetAxis("Horizontal") * sensitivity, Velocity.y, Velocity.z) * GameManager.Singleton.GameSpeed * Time.fixedDeltaTime);
+        player.Move(Velocity * GameManager.Singleton.GameSpeed * Time.fixedDeltaTime);
         timeSinceLastHit += Time.fixedDeltaTime * GameManager.Singleton.GameSpeed;
         if (Velocity.y <= jumpSafety && lastFixedUpdatePosition + Velocity.z * forgivenessRatio * GameManager.Singleton.GameSpeed * Time.fixedDeltaTime > transform.position.z && GameManager.Singleton.GameSpeed > 0)//if the player has hit something
         {
