@@ -26,9 +26,15 @@ public class BikeAnimations : MonoBehaviour
     #region Variables
     [SerializeField] private Transform bikeHandles, bikeFrontWheel, bikeBackWheel;
     [Range(0,45)][SerializeField] private float bikeEulerAngleVertical, bikeEulerAngleHorizontal, frontWheelEulerAngle, handleEylerAngle;
+    [SerializeField] private float lowSpeedTurnRatio;
     #endregion
-    private void Update()
+    private void FixedUpdate()
     {
-        transform.localRotation = Quaternion.Euler(0, 180 + PlayerMovement.Singleton.Velocity.x * bikeEulerAngleHorizontal * Time.deltaTime, 0);
+        transform.localRotation = Quaternion.Euler(0, 180 + PlayerMovement.Singleton.Velocity.x * bikeEulerAngleHorizontal * Time.fixedDeltaTime * SpeedRatio(), 0);
+    }
+    private float SpeedRatio()
+    {
+        float ratio = 1/lowSpeedTurnRatio - PlayerMovement.Singleton.Velocity.z / (PlayerMovement.Singleton.MaxSpeed * lowSpeedTurnRatio * 1.25f);
+        return ratio;
     }
 }

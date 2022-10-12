@@ -33,14 +33,19 @@ public class PlayerMovement : MonoBehaviour
             _velocity = value;
         }
     }
+    [Tooltip("Maximum speed the player can travel at in unity units per second")]
+    [SerializeField] private float _maxSpeed;
+    public float MaxSpeed
+    {
+        get { return _maxSpeed; }
+        set { _maxSpeed = value; }
+    }
     [Tooltip("The position to spawn a projectile from")]
     [SerializeField] private Transform _bulletSpawn;
     public Transform BulletSpawn { get => _bulletSpawn; }
     #endregion
     #region Variables
     private CharacterController player;//character controller reference
-    [Tooltip("Maximum speed the player can travel at in unity units per second")]
-    [SerializeField] private float maxSpeed;
     [Tooltip("Acceleration that the player will speed up by in unity units per second squared")]
     [SerializeField] private float acceleration;
     [Tooltip("Gravity to apply to the player in unity units per second squared")]
@@ -65,10 +70,10 @@ public class PlayerMovement : MonoBehaviour
     private void FixedUpdate()
     {
         //increases the speed based on the set acceleration and adds gravity
-        Velocity += new Vector3(Input.GetAxis("Horizontal") * sensitivity, gravity, acceleration);
+        Velocity += new Vector3(0, -gravity, acceleration);
         //makes sure the player isn't moving back, and isn't going faster than they should be,
         //and resets the vertical velosity if the playeris on the ground
-        Velocity = new Vector3 (Velocity.x, Velocity.y <= 0 && player.isGrounded ? 0 : Velocity.y, Mathf.Clamp(Velocity.z, 0, maxSpeed));
+        Velocity = new Vector3 (Input.GetAxis("Horizontal") * sensitivity, Velocity.y <= 0 && player.isGrounded ? 0 : Velocity.y, Mathf.Clamp(Velocity.z, 0, MaxSpeed));
         //moves the player forward, horizontally based on input
         player.Move(Velocity * GameManager.Singleton.GameSpeed * Time.fixedDeltaTime);
         timeSinceLastHit += Time.fixedDeltaTime * GameManager.Singleton.GameSpeed;
