@@ -13,5 +13,4 @@ public class SlowTimeCard : Card
         GameManager.Singleton.TriggerSlow(_newGameSpeed,_slowDuration);
         Debug.Log("Plays Slow Time card");
     }
-
 }
