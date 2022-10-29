@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e8074abf2fa19a459d0e497e108c810, type: 3}
   m_Name: Jump Card
   m_EditorClassIdentifier: 
-  cardTexture: {fileID: 2800000, guid: ffc194e541e8bc94f9db507366a31cd6, type: 3}
+  cardTexture: {fileID: 2800000, guid: 9809be4f9d5334e4687a5ff1f0f48c61, type: 3}
   _jumpSpd: 25

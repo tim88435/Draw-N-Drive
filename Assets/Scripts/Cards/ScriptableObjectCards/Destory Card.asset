@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f80405b5abf9f68469115018d3a29f8f, type: 3}
   m_Name: Destory Card
   m_EditorClassIdentifier: 
-  cardTexture: {fileID: 2800000, guid: 214720e77a9d55e4ca43b83bebb804bc, type: 3}
+  cardTexture: {fileID: 2800000, guid: 8a8f488c647cbc8438f6698558ba6f20, type: 3}
   _projectilePrefab: {fileID: 1218282084530617530, guid: 3866d53c9da86dc43a146e0bc1ead9b5, type: 3}
