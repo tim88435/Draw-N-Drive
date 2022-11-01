@@ -680,40 +680,22 @@ MonoBehaviour:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0.2
-      outSlope: 0.2
-      tangentMode: 34
+      time: -1.2013478
+      value: 1.1983796
+      inSlope: 0.015159808
+      outSlope: 0.015159808
+      tangentMode: 0
       weightedMode: 0
       inWeight: 0
-      outWeight: 0.33333334
+      outWeight: 0.12396694
     - serializedVersion: 3
-      time: 10
-      value: 2
-      inSlope: 0.13450702
-      outSlope: 0.13450702
+      time: 50.42279
+      value: 1.611126
+      inSlope: 0.008171371
+      outSlope: 0.008171371
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.5846988
-    - serializedVersion: 3
-      time: 20
-      value: 3
-      inSlope: 0.114107996
-      outSlope: 0.114107996
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.20390783
-    - serializedVersion: 3
-      time: 50
-      value: 60
-      inSlope: 1.9
-      outSlope: 1.9
-      tangentMode: 34
-      weightedMode: 0
-      inWeight: 0.33333334
+      inWeight: 0.19421495
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
@@ -722,40 +704,22 @@ MonoBehaviour:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: -2.2564316
-      value: 2.418213
-      inSlope: -0.015356254
-      outSlope: -0.015356254
-      tangentMode: 34
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 10
-      value: 2.23
-      inSlope: -0.019178128
-      outSlope: -0.019178128
-      tangentMode: 34
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 20
-      value: 2
-      inSlope: 0.044667646
-      outSlope: 0.044667646
+      time: -0.5080328
+      value: 0.26453072
+      inSlope: 0.038545843
+      outSlope: 0.038545843
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.49195138
+      inWeight: 0
+      outWeight: 0.11344533
     - serializedVersion: 3
-      time: 50
-      value: 45
-      inSlope: 1.4333333
-      outSlope: 1.4333333
-      tangentMode: 34
+      time: 50.12668
+      value: 3.0972748
+      inSlope: 0.02372278
+      outSlope: 0.02372278
+      tangentMode: 0
       weightedMode: 0
-      inWeight: 0.33333334
+      inWeight: 0.14285715
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
@@ -764,40 +728,22 @@ MonoBehaviour:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: -0.89226973
-      value: 8.104955
-      inSlope: -0.14734805
-      outSlope: -0.14734805
-      tangentMode: 34
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 10
-      value: 6.5
-      inSlope: -0.24867402
-      outSlope: -0.24867402
-      tangentMode: 34
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 20
-      value: 3
-      inSlope: -0.102880545
-      outSlope: -0.102880545
+      time: -0.46640074
+      value: 3.1397867
+      inSlope: -0.08170004
+      outSlope: -0.08170004
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.7932502
-      outWeight: 0.22291692
+      inWeight: 0
+      outWeight: 0.10833334
     - serializedVersion: 3
-      time: 50
-      value: 1.5
-      inSlope: -0.05
-      outSlope: -0.05
-      tangentMode: 34
+      time: 50.212036
+      value: 1.484436
+      inSlope: -0.014087723
+      outSlope: -0.014087723
+      tangentMode: 0
       weightedMode: 0
-      inWeight: 0.33333334
+      inWeight: 0.30290437
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
@@ -1009,8 +955,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c89893e9f29adc649ad787b3a67abd3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _velocity: {x: 0, y: 0, z: 10}
-  _maxSpeed: 10
+  _velocity: {x: 0, y: 0, z: 0}
+  _maxSpeed: 50
   _bulletSpawn: {fileID: 1452744392}
   acceleration: 0.05
   gravity: 1
@@ -6320,6 +6266,7 @@ MonoBehaviour:
   maxCards: 3
   panelTransform: {fileID: 1907993848}
   _debug: 0
+  _cardDrawTime: 5
 --- !u!114 &1686332784
 MonoBehaviour:
   m_ObjectHideFlags: 0

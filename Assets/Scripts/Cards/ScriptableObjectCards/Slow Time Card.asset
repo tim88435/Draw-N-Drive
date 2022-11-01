@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3d97800e5bdfd444a829123e365f583, type: 3}
   m_Name: Slow Time Card
   m_EditorClassIdentifier: 
-  cardTexture: {fileID: 2800000, guid: 2ccabb8770d438b4eb721b6f800011c0, type: 3}
+  cardTexture: {fileID: 2800000, guid: 1265912fe539ff1469aaea00db2264b1, type: 3}
   _slowDuration: 5
   _newGameSpeed: 0.6

@@ -41,10 +41,10 @@ public class CardHandler : MonoBehaviour
     private int selectedCard;//index of the current selected card
     [Tooltip("Panel parent to which under to instanciate cards")]
     [SerializeField] private Transform panelTransform;
-
+    [Tooltip("Draw the first card in the list of cards")]
     [SerializeField] private bool _debug;
-    
-
+    [Tooltip("Time it takes to draw a new card")]
+    [SerializeField] [Range(0.5f,60f)] private float _cardDrawTime;
     private void Start()
     {
         StartCoroutine(DrawCards());//start drawing the cards (temporary?)
@@ -125,7 +125,7 @@ public class CardHandler : MonoBehaviour
     /// </summary>
     private IEnumerator DrawCards()
     {
-        yield return new WaitForSeconds(1);//wait 1 second (for development)
+        yield return new WaitForSeconds(_cardDrawTime);//wait 1 second (for development)
         AddCardToHand(GetRandomCard(cards));//add a random card
         StartCoroutine(DrawCards());//start this method again
     }
