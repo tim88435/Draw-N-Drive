@@ -27,6 +27,7 @@ public class Player : MonoBehaviour
     [Tooltip("Current Health of the player")]
     [Range(0, 3)]
     [SerializeField] private int _health;
+    [SerializeField] ProgressBar _progressBar;
     public int Health
     {
         get { return _health; }
@@ -67,5 +68,11 @@ public class Player : MonoBehaviour
         _particleSystem = GetComponent<ParticleSystem>();//sets reference fot the partilce system
         settings = _particleSystem.main;//sets reference fot the partilce system's main variables
         Health = 3;//sets the main to 3
+        _progressBar.MaxProgress = 1000;
+        _progressBar.CurrentProgress = 0;
+    }
+    private void Update()
+    {
+        _progressBar.CurrentProgress = transform.position.z;
     }
 }
