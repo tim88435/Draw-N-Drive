@@ -26,8 +26,8 @@ public class ProgressBar : MonoBehaviour
 
     private void GetCurrentFill()
     {
-        float currentOffset = _currentProgress - _minProgress;
-        float maxOffset = _maxProgress - _minProgress;
+        float currentOffset = CurrentProgress - _minProgress;
+        float maxOffset = MaxProgress - _minProgress;
         float fillAmount = currentOffset / maxOffset;
         mask.fillAmount = fillAmount;
     }
