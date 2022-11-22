@@ -49,9 +49,10 @@ public class Player : MonoBehaviour
                     settings.startColor = Color.black;
                     break;
                 default://if the health is not within 1, 2 or 3, assume that the plyer is dead
-#if UNITY_EDITOR//if in the unity editor, stop playing when health reaches 0
-                    UnityEditor.EditorApplication.ExitPlaymode();
-#endif
+                        //#if UNITY_EDITOR//if in the unity editor, stop playing when health reaches 0
+                        //                    UnityEditor.EditorApplication.ExitPlaymode();
+                        //#endif
+                    MenuManager.ReturnToMainMenu();
                     break;
             }
         }

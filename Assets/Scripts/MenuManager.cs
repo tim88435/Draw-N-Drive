@@ -20,4 +20,9 @@ public class MenuManager : MonoBehaviour
 
     }
 
+    public static void ReturnToMainMenu()
+    {
+        SceneManager.LoadScene(0);
+    }
+
 }
