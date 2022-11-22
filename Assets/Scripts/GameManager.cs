@@ -52,19 +52,19 @@ public class GameManager : MonoBehaviour
         StartCoroutine("SlowGameSpeed");
     }
 
-    IEnumerator SlowGameSpeed()
+    private IEnumerator SlowGameSpeed()
     {
-        while (_gameSpeed != _targetGameSpeed)//while the game has not reached the target speed
+        while (GameSpeed != _targetGameSpeed)//while the game has not reached the target speed
         {
-            _gameSpeed = Mathf.MoveTowards(_gameSpeed, _targetGameSpeed, Time.deltaTime);//move towards the target speed
+            GameSpeed = Mathf.MoveTowards(GameSpeed, _targetGameSpeed, Time.deltaTime);//move towards the target speed
             yield return null;//repeat each frame
         }
 
         yield return new WaitForSeconds(_slowDuration);//wait the duration of the effect
 
-        while (_gameSpeed != 1)//while game speed is not back to normal
+        while (GameSpeed != 1)//while game speed is not back to normal
         {
-            _gameSpeed = Mathf.MoveTowards(_gameSpeed, 1, 0.5f * Time.deltaTime);//move towards normal speed
+            GameSpeed = Mathf.MoveTowards(GameSpeed, 1, 0.5f * Time.deltaTime);//move towards normal speed
             yield return null;//repeat each frame
         }
         _targetGameSpeed = 1; //set the target speed back to default

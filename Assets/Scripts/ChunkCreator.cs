@@ -31,10 +31,10 @@ public class ChunkCreator : EditorWindow
         {
             return;//if the user hasn't thrown in the parent yet, stop there
         }
-        ChunkID = EditorGUILayout.IntField("Chunk ID", ChunkID);//allow the player to change what chunk ID they're working on
+        ChunkID = EditorGUILayout.IntField("Chunk ID", ChunkID);//allow the user to change what chunk ID they're working on
         if (chunk != null)
         {
-            chunk.name = EditorGUILayout.TextField("Chunk Name:", chunk.name);
+            chunk.name = EditorGUILayout.TextField("Chunk Name:", chunk.name);//allows user to change the name of the chunk
         }
         if (ChunkManager.Singleton.savedChunks.Count > ChunkID)//if the chunk id is less or equal to the number of chunks saved
         {

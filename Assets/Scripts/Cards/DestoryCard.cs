@@ -8,6 +8,10 @@ public class DestoryCard : Card
     public override void Play()//plays the card
     {
         Instantiate(_projectilePrefab, PlayerMovement.Singleton.BulletSpawn.position, Quaternion.identity, null);
+        if (Tutorial.Singleton != null)
+        {
+            Tutorial.Singleton.hasPlayedProjectileCard = true;
+        }
         Debug.Log("Plays Destroy card");
     }
 }

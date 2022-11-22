@@ -36,9 +36,9 @@ public class CardHandler : MonoBehaviour
     [Tooltip("UI image prefab to display cards")]
     [SerializeField] private GameObject cardPrefab;
     [Tooltip("List of saved scriptable object cards")]
-    [SerializeField] private Card[] cards;
+    public Card[] cards;
     //active cards in the player's inventory
-    private List<KeyValuePair<GameObject, Card>> activeCards = new List<KeyValuePair<GameObject, Card>>();
+    public List<KeyValuePair<GameObject, Card>> activeCards = new List<KeyValuePair<GameObject, Card>>();
     [Tooltip("Maximum cards in the player's inventory")]
     [Range(0, 10)]
     [SerializeField] private int maxCards;
@@ -48,7 +48,7 @@ public class CardHandler : MonoBehaviour
     [Tooltip("Draw the first card in the list of cards")]
     [SerializeField] private bool _debug;
     [Tooltip("Time it takes to draw a new card")]
-    [SerializeField] [Range(0.5f,60f)] private float _cardDrawTime;
+    [SerializeField] private float _cardDrawTime;
     private void Start()
     {
         StartCoroutine(DrawCards());//start drawing the cards (temporary?)
@@ -103,7 +103,7 @@ public class CardHandler : MonoBehaviour
     /// </summary>
     /// <param name="card">Card to Add</param>
     /// <returns>If the card was able to be added to the hand</returns>
-    private bool AddCardToHand(Card card)
+    public bool AddCardToHand(Card card)
     {
         if (activeCards.Count >= maxCards)//if the hand is full
         {

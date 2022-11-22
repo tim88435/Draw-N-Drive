@@ -221,7 +221,7 @@ Transform:
   - {fileID: 969014380}
   - {fileID: 204856731}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &99989825
 PrefabInstance:
@@ -519,37 +519,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 79300307}
   m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &353770785
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 353770786}
-  m_Layer: 0
-  m_Name: Temp Chunk
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &353770786
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 353770785}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &428452186 stripped
 Transform:
@@ -932,7 +901,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _velocity: {x: 0, y: 0, z: 0}
-  _maxSpeed: 50
+  _maxSpeed: 20
   _bulletSpawn: {fileID: 1452744392}
   acceleration: 0.05
   gravity: 1
@@ -5901,6 +5870,11 @@ Transform:
   m_Father: {fileID: 995301376}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1579739877 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7531428352891927016, guid: 131cd5b6ecb0bc741b59c34d90eede47, type: 3}
+  m_PrefabInstance: {fileID: 16413755}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1585916613
 GameObject:
   m_ObjectHideFlags: 0
@@ -5981,6 +5955,7 @@ GameObject:
   - component: {fileID: 1686332780}
   - component: {fileID: 1686332783}
   - component: {fileID: 1686332784}
+  - component: {fileID: 1686332785}
   m_Layer: 0
   m_Name: GameHandler
   m_TagString: Untagged
@@ -6061,13 +6036,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardPrefab: {fileID: 7182681095509793664, guid: 938ce026ff66e50408b8b5c7bd8ab6b2, type: 3}
   cards:
-  - {fileID: 11400000, guid: 309afaba48556c54bace345f2ecfece6, type: 2}
   - {fileID: 11400000, guid: d52124d631f30224080c0d2254dd43bc, type: 2}
-  - {fileID: 11400000, guid: 11e6d5301a693144c9bab0d42c0e0547, type: 2}
-  maxCards: 3
+  maxCards: 1
   panelTransform: {fileID: 1907993848}
   _debug: 0
-  _cardDrawTime: 5
+  _cardDrawTime: 3
 --- !u!114 &1686332784
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6081,6 +6054,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _gameSpeed: 1
+--- !u!114 &1686332785
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1686332779}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 862c0b3045b19354ca33a48a3816b4d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hasPlayedJumpCard: 0
+  hasPlayedProjectileCard: 0
+  firstStopPosition: 95
+  SecondStopPosition: 195
+  slowDistance: 30
+  endDistance: 250
+  tutorialCards:
+  - {fileID: 11400000, guid: d52124d631f30224080c0d2254dd43bc, type: 2}
+  - {fileID: 11400000, guid: 309afaba48556c54bace345f2ecfece6, type: 2}
+  secondBarrier: {fileID: 1579739877}
 --- !u!1 &1729594032
 GameObject:
   m_ObjectHideFlags: 0
@@ -6338,7 +6333,7 @@ RectTransform:
   - {fileID: 1907993848}
   - {fileID: 1787204998}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}

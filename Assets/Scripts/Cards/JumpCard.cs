@@ -11,6 +11,10 @@ public class JumpCard : Card
         Vector3 vel = PlayerMovement.Singleton.Velocity;//get the player's current velocity
         vel.y = _jumpSpd;//apply the jump speed to that vector
         PlayerMovement.Singleton.Velocity = vel;//reapply the new vector back to the player
+        if (Tutorial.Singleton != null)
+        {
+            Tutorial.Singleton.hasPlayedJumpCard = true;
+        }
         Debug.Log("Plays Jump card");
     }
 }
