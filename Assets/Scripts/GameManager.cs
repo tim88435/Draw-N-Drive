@@ -27,6 +27,10 @@ public class GameManager : MonoBehaviour
     {
         Singleton = this;
     }
+    private void OnEnable()
+    {
+        Singleton = this;
+    }
     #endregion
     [Tooltip("Current multiplier of game speed")]
     [Range(0, 3)]

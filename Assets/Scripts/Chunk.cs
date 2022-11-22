@@ -65,7 +65,11 @@ public class Chunk : ScriptableObject
         foreach (ChunkObject item in objects)//for each saved object in the saved chunk
         {
             //Instantiate the prefab object, but make sure that it is still considered a prefab
+#if UNITY_EDITOR
             Transform newGameObjectTransform = (PrefabUtility.InstantiatePrefab(PrefabManager.Singleton.GetObject(item.objectID), chunkParent) as GameObject).transform;
+#else
+            Transform newGameObjectTransform = Instantiate(PrefabManager.Singleton.GetObject(item.objectID), chunkParent).transform;
+#endif
             //set the transform of the object to the saved transform
             newGameObjectTransform.localPosition = item.position;
             newGameObjectTransform.localRotation = Quaternion.Euler(item.rotation);

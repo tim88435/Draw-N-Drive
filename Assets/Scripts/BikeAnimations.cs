@@ -60,4 +60,12 @@ public class BikeAnimations : MonoBehaviour
         }
         return original;
     }
+    private void OnValidate()
+    {
+        Singleton = this;
+    }
+    private void OnEnable()
+    {
+        Singleton = this;
+    }
 }

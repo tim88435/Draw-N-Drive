@@ -23,7 +23,12 @@ public class PrefabManager: MonoBehaviour
                 Destroy(value.gameObject);
             }
         }
-    }    private void OnValidate()
+    }
+    private void OnValidate()
+    {
+        Singleton = this;
+    }
+    private void OnEnable()
     {
         Singleton = this;
     }
@@ -39,6 +44,7 @@ public class PrefabManager: MonoBehaviour
     {
         return prefabList[index];
     }
+#if UNITY_EDITOR
     /// <summary>
     /// Returns if the gameobject is a prefab, and the prefab ID in the saved prefab list
     /// </summary>
@@ -59,6 +65,7 @@ public class PrefabManager: MonoBehaviour
         ID = 0;
         return false;
     }
+#endif
     /*
 #if UNITY_EDITOR
     [MenuItem("Chunks/Prefabs/Clear All Prefabs")]

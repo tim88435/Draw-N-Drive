@@ -28,6 +28,10 @@ public class CardHandler : MonoBehaviour
     {
         Singleton = this;
     }
+    private void OnEnable()
+    {
+        Singleton = this;
+    }
     #endregion
     [Tooltip("UI image prefab to display cards")]
     [SerializeField] private GameObject cardPrefab;
@@ -86,7 +90,7 @@ public class CardHandler : MonoBehaviour
         {
             if (i == selectedCard)//if it's the selected card
             {
-                activeCards[i].Key.transform.GetChild(0).localPosition = Vector3.up * 100;//show the card above the others
+                activeCards[i].Key.transform.GetChild(0).localPosition = Vector3.up * 50;//show the card above the others
             }
             else//if it's not
             {
@@ -106,7 +110,11 @@ public class CardHandler : MonoBehaviour
             return false;//return that you can't add any more cards
         }
         //make a new card in the scene in the correct format ready to add to the list of cards
+#if UNITY_EDITOR
         KeyValuePair<GameObject, Card> newCard = new KeyValuePair<GameObject, Card>(UnityEditor.PrefabUtility.InstantiatePrefab(cardPrefab, panelTransform) as GameObject, card);
+#else
+        KeyValuePair<GameObject, Card> newCard = new KeyValuePair<GameObject, Card>(Instantiate(cardPrefab, panelTransform) as GameObject, card);
+#endif
         newCard.Key.transform.GetChild(0).GetComponent<RawImage>().texture = newCard.Value.cardTexture;//set the correct texture
         activeCards.Add(newCard);//add the card to the list of cards in the hand
         return true;//return that the card has been added

@@ -93,4 +93,8 @@ public class PlayerMovement : MonoBehaviour
     {
         Singleton = this;//sets this to be the only instance
     }
+    private void OnEnable()
+    {
+        Singleton = this;
+    }
 }

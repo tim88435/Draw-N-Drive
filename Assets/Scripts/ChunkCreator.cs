@@ -2,11 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
-
+#if UNITY_EDITOR //to make sure that the build maker doesn't throw a fit unsure that 'MenuItem' isR
 public class ChunkCreator : EditorWindow
 {
-#if UNITY_EDITOR //to make sure that the build maker doesn't throw a fit unsure that 'MenuItem' is
-    
     [MenuItem("Chunks/Open Chunk Creator")]
     public static void ShowWindow()
     {
@@ -14,7 +12,6 @@ public class ChunkCreator : EditorWindow
         //(rather than when you hover over the chunk creator)
         EditorWindow.GetWindow(typeof(ChunkCreator)).autoRepaintOnSceneChange = true;
     }
-#endif
     GameObject chunkObject;//reference to the parent gameobject to which to spawn chunk objects in the heirachy
     Chunk chunk;//reference to current chunk that's been worked on
     private int chunkID;//chunk id that the user sets, and the position of the chunk in the chunk manager's list of saved chunks
@@ -139,3 +136,4 @@ public class ChunkCreator : EditorWindow
         chunk.objects = chunkObjects;//sets the chunks' objects as the new list
     }
 }
+#endif

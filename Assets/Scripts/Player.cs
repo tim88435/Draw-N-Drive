@@ -63,6 +63,10 @@ public class Player : MonoBehaviour
     {
         Singleton = this;//setting this as the only instance
     }
+    private void OnEnable()
+    {
+        Singleton = this;
+    }
     private void Start()
     {
         _particleSystem = GetComponent<ParticleSystem>();//sets reference fot the partilce system

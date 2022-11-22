@@ -28,11 +28,16 @@ public class ChunkManager : MonoBehaviour
     {
         Singleton = this;
     }
-
+    private void OnEnable()
+    {
+        Singleton = this;
+    }
     #endregion
     public List<Chunk> savedChunks = new List<Chunk>();//list of the saved chunks to use to make the level
     #region Editor Menu Items
+#if UNITY_EDITOR
     [MenuItem("Chunks/Saved Chunks/Clear")]//Removes ALL saved chunks
+#endif
     public static void ClearSavedChunks()
     {
         Singleton.savedChunks.Clear();
