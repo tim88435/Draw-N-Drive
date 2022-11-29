@@ -70,7 +70,7 @@ public class PlayerMovement : MonoBehaviour
     private void FixedUpdate()
     {
         //increases the speed based on the set acceleration and adds gravity
-        Velocity += new Vector3(0, -gravity, acceleration);
+        Velocity += new Vector3(0, -gravity * GameManager.Singleton.GameSpeed, acceleration);
         //makes sure the player isn't moving back, and isn't going faster than they should be,
         //and resets the vertical velosity if the playeris on the ground
         Velocity = new Vector3 (Input.GetAxis("Horizontal") * sensitivity, Velocity.y <= 0 && player.isGrounded ? 0 : Velocity.y, Mathf.Clamp(Velocity.z, 0, MaxSpeed));

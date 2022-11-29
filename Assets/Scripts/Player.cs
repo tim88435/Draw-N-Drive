@@ -25,7 +25,7 @@ public class Player : MonoBehaviour
     #endregion
     #region Properties
     [Tooltip("Current Health of the player")]
-    [Range(0, 3)]
+    [Range(0, 10)]
     [SerializeField] private int _health;
     [SerializeField] ProgressBar _progressBar;
     public int Health
@@ -48,11 +48,11 @@ public class Player : MonoBehaviour
                     _particleSystem.Play();
                     settings.startColor = Color.black;
                     break;
-                default://if the health is not within 1, 2 or 3, assume that the plyer is dead
-                        //#if UNITY_EDITOR//if in the unity editor, stop playing when health reaches 0
-                        //                    UnityEditor.EditorApplication.ExitPlaymode();
-                        //#endif
-                    MenuManager.ReturnToMainMenu();
+                default:
+                    if (_health <= 0)
+                    {
+                        MenuManager.ReturnToMainMenu();
+                    }
                     break;
             }
         }
@@ -72,7 +72,8 @@ public class Player : MonoBehaviour
     {
         _particleSystem = GetComponent<ParticleSystem>();//sets reference fot the partilce system
         settings = _particleSystem.main;//sets reference fot the partilce system's main variables
-        Health = 3;//sets the main to 3
+        //Health = 3;//sets the main to 3
+        _particleSystem.Stop();
         _progressBar.MaxProgress = 1000;
         _progressBar.CurrentProgress = 0;
     }

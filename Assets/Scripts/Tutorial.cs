@@ -36,6 +36,7 @@ public class Tutorial : MonoBehaviour
     [SerializeField] private float endDistance;
     [SerializeField] private Card[] tutorialCards;
     [SerializeField] private GameObject secondBarrier;
+    [SerializeField] private GameObject hintUI;
     private void FixedUpdate()
     {
         UpdateCardsBasedOnDistance();
@@ -49,9 +50,12 @@ public class Tutorial : MonoBehaviour
             SlowTime(SecondStopPosition);
             CardHandler.Singleton.cards[0] = tutorialCards[1];
         }
-        else if (Player.Singleton.transform.position.z > endDistance)
+        else if (Player.Singleton.transform.position.z < endDistance)
         {
             SlowTime(1000f);
+        }
+        else
+        {
             MenuManager.ReturnToMainMenu();
         }
     }
@@ -83,5 +87,6 @@ public class Tutorial : MonoBehaviour
             }
         }
         hasPlayedProjectileCard = secondBarrier == null;
+        hintUI.SetActive(GameManager.Singleton.GameSpeed <= 0.1f);
     }
 }
